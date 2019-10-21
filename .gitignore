@@ -3,3 +3,9 @@ node_modules
 dist
 .tmp
 app.yaml
+
+# IntelliJ ide
+.idea
+/.idea
+**/.idea
+.editorconfig
