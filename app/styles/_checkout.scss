@@ -77,6 +77,14 @@
         }
       }
 
+      &--tooltip{
+        padding-right: 30px;
+        background-image: url('../../images/questionmark.png');
+        background-repeat: no-repeat;
+        background-position: calc(100% - 10px) center;
+        background-size: auto 20px;
+      }
+
       &--submit{
         padding: 0;
         background-color: transparent;
