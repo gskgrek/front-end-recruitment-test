@@ -68,6 +68,7 @@
           <a href="#features" class="mdl-layout__tab">Details</a>
           <a href="#features" class="mdl-layout__tab">Technology</a>
           <a href="#features" class="mdl-layout__tab">FAQ</a>
+          <a href="#checkout" class="mdl-layout__tab">Checkout</a>
           <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
             <i class="material-icons" role="presentation">add</i>
             <span class="visuallyhidden">Add</span>
@@ -228,6 +229,140 @@
             </div>
           </section>
         </div>
+
+        <div class="mdl-layout__tab-panel" id="checkout">
+
+          <div class="checkout-content">
+
+            <form class="form" action="" method="post">
+
+              <section class="form__section">
+
+                <div class="form__title"><span class="form__step">1</span> Personal information</div>
+
+                <div class="form__columns">
+
+                  <div class="form__group">
+                    <label for="first_name">First name</label>
+                    <input id="first_name" type="text" name="first_name" value="" placeholder="Elon">
+                  </div>
+
+                  <div class="form__group">
+                    <label for="last_name">Last name</label>
+                    <input id="last_name" type="text" name="last_name" value="" placeholder="Musk">
+                  </div>
+
+                </div>
+
+                <div class="form__group">
+                  <label for="email">Email</label>
+                  <input id="email" data-type="email" type="email" name="email" value="" placeholder="elon@spacex.com">
+                </div>
+
+                <div class="form__columns">
+
+                  <div class="form__group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                      <option value="">-- select --</option>
+                      <option value="1">United States</option>
+                      <option value="2">Poland</option>
+                    </select>
+                  </div>
+
+                  <div class="form__group">
+                    <label for="postal_code">Postal code</label>
+                    <input id="postal_code" data-type="postal_code" type="text" name="postal_code" value="" placeholder="10001">
+                  </div>
+
+                </div>
+
+                <div class="form__group">
+                  <label for="phone_number">Phone Number</label>
+                  <input id="phone_number" data-type="phone" type="tel" name="phone_number" value="" placeholder="(212) 692-93-92">
+                </div>
+
+              </section>
+
+              <section class="form__section">
+
+                <div class="form__title"><span class="form__step">2</span> Payments details <img src="images/lock.png" alt="" /></div>
+
+                <div class="form__group form__group--credit-card visa">
+                  <label for="credit_card">Credit Card Number</label>
+                  <input id="credit_card" data-type="credit-card" type="text" name="credit_card" value="" placeholder="0000 - 0000 - 0000 - 0000">
+                </div>
+
+                <div class="form__columns">
+
+                  <div class="form__group form__group--tooltip">
+                    <label for="cvv">Security code</label>
+                    <input id="cvv" type="text" data-type="cvv" name="cvv" value="" placeholder="***" autocomplete="off">
+                  </div>
+
+                  <div class="form__group">
+                    <label for="expiration_date">Expiration date</label>
+                    <input id="expiration_date" data-type="expiration_date" type="text" name="expiration_date" value="" placeholder="MM/YY">
+                  </div>
+
+                </div>
+
+              </section>
+
+              <section class="form__section">
+
+                <div class="form__group form__group--submit">
+                  <button type="submit"><img src="images/cart.png" alt="" /> Complete purchase</button>
+                </div>
+
+              </section>
+
+            </form>
+
+
+            <div class="summary">
+
+              <div class="summary__title">Your order</div>
+
+              <div class="summary__item">
+                <div>Apple Watch Sport</div>
+                <div>$ 580</div>
+              </div>
+
+              <div class="summary__item">
+                <div>Modern Buckle</div>
+                <div>$ 380</div>
+              </div>
+
+              <hr/>
+
+              <div class="summary__item">
+                <div>Total purchases</div>
+                <div>$ 960.00</div>
+              </div>
+
+              <div class="summary__item">
+                <div>Estimated tax</div>
+                <div>$ 0</div>
+              </div>
+
+              <hr/>
+
+              <div class="summary__item summary__item--total">
+                <div>Total</div>
+                <div>$ 960</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="checkout-modal">
+
+          </div>
+
+        </div>
+
         <footer class="mdl-mega-footer">
           <div class="mdl-mega-footer--middle-section">
             <div class="mdl-mega-footer--drop-down-section">
