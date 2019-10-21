@@ -74,11 +74,124 @@
   }
 
   // Your custom JavaScript goes here
-  let $btn = document.getElementById('btn');
-  let $baconList = document.getElementById('baconList');
+
+  // TASK 1
+  const $btn = document.getElementById('btn');
+  const $baconList = document.getElementById('baconList');
   if( $btn && $baconList ){
     $btn.addEventListener('click', function(){
       $baconList.appendChild( $baconList.querySelector('img').cloneNode(false) );
+    });
+  }
+
+  // TASK 2
+
+  const validateText = function(input){
+    return String(input).trim() !== '';
+  };
+
+  const validateEmail = function(input){
+    let pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return pattern.test( String(input).trim() );
+  };
+
+  const validatePostalCode = function(input){
+    let pattern = /^\d{5}$/;
+    return pattern.test( String(input).trim() );
+  };
+
+  const validatePhone = function(input){
+    let pattern = /^\(()\d{3}\)\ \d{3}\-\d{2}\-\d{2}$/; // this will match exact patter as in input placeholder, but it's better to use some advanced libraries because phone numbers are quit complicated around the world
+    return pattern.test( String(input).trim() );
+  };
+
+  const validateCreditCard = function(input){
+    let pattern = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    return pattern.test( String(input).trim() );
+  };
+
+  const validateCVV = function(input){
+    let pattern = /^\d{3}$/;
+    return pattern.test( String(input).trim() );
+  };
+
+  const validateExpirationDate = function(input){
+    let pattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    return pattern.test( String(input).trim() );
+  };
+
+  const $checkout = document.getElementById('checkout');
+  if( $checkout ){
+    $checkout.querySelector('form').addEventListener('submit', function(e){
+      let errors = [];
+
+      const elements = this.querySelectorAll('input, select');
+      elements.forEach( (item) => {
+
+        const type = item.dataset.type ? item.dataset.type : 'text';
+        let isValid = true;
+
+        switch( type ){
+
+          case 'email':
+            isValid = validateEmail(item.value);
+            errors.push( 'Please enter a valid email' );
+            break;
+
+          case 'postal_code':
+            isValid = validatePostalCode(item.value);
+            errors.push( 'Please enter a valid postal code, e.g. 10001' );
+            break;
+
+          case 'phone':
+            isValid = validatePhone(item.value);
+            errors.push( 'Please enter a valid phone number, e.g. (212) 692-93-92' );
+            break;
+
+          case 'credit-card':
+            isValid = validateCreditCard(item.value);
+            errors.push( 'Please enter a valid credit card number, e.g. 0000-0000-0000-0000' );
+            break;
+
+          case 'cvv':
+            isValid = validateCVV(item.value);
+            errors.push( 'Please enter a valid cvv code, e.g. 000' );
+            break;
+
+          case 'expiration_date':
+            isValid = validateExpirationDate(item.value);
+            errors.push( 'Please enter a valid expiration date (MM/YY), e.g. 12/23 ' );
+            break;
+
+          case 'text':
+            isValid = validateText(item.value);
+            errors.push( 'Please fill empty fields' );
+            break;
+
+        }
+
+        if( !isValid ){
+          item.parentNode.classList.add('form-error');
+        }
+
+      });
+
+      if( errors.length > 0 ){
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        let msg = errors.join("<br/>\n");
+        console.log( msg );
+
+        return false;
+
+      }else{
+
+        // allow browser to post form or prevent, serialize and send data to api
+
+      }
+
     });
   }
 
