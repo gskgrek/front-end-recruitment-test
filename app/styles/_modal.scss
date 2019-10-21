@@ -1,0 +1,244 @@
+$modal-bg: #FFFFFF;
+$modal-color: #000000;
+$modal-error: #E3342F;
+$modal-success: #398439;
+$modal-warning: #ffc107;
+$modal-info: #117a8b;
+
+$modal-btn-ok: #007bff;
+$modal-btn-cancel: #6c757d;
+
+.modal{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  overflow: hidden;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.8);
+
+  &.show{
+    display: block;
+  }
+
+  &__dialog{
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events:none;
+
+    @media (min-width: 577px){
+      max-width: 500px;
+      margin: 1.75rem auto;
+    }
+  }
+
+  &__content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: $modal-bg;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    color: $modal-color;
+  }
+
+  &__header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  &__body{
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+
+  &__footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+
+    >:not(:last-child){
+      margin-right: 0.25rem;
+    }
+  }
+
+  &__title{
+    margin: 0;
+    line-height: 1.5;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  &__close{
+    cursor: pointer;
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.5;
+    text-transform: none;
+    transition: opacity 0.25s;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+
+
+  &__btn-ok, &__btn-cancel{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    transition: background-color 0.25s ease-in-out;
+    line-height: 1.5;
+  }
+
+  &__btn-ok{
+    color: #FFFFFF;
+    background: $modal-btn-ok;
+    &:hover{
+      background-color: darken($modal-btn-ok, 10%);
+    }
+  }
+  &__btn-cancel{
+    color: #FFFFFF;
+    background: $modal-btn-cancel;
+    &:hover{
+      background-color: darken($modal-btn-cancel, 10%);
+    }
+  }
+
+
+  &--error, &--danger{
+    .modal__header {
+      color: $modal-error;
+      background: $modal-bg;
+      border-bottom: 1px solid $modal-error;
+    }
+
+    .modal__close {
+      color: $modal-color;
+      text-shadow: 0 1px 0 #000;
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+
+    .modal__body {
+      color: $modal-color;
+      background: $modal-bg;
+    }
+
+    .modal__footer {
+      background: $modal-bg;
+      border-top: 1px solid $modal-error;
+    }
+  }
+
+
+
+  &--success {
+
+    .modal__header {
+      color: $modal-success;
+      background: $modal-bg;
+      border-bottom: 1px solid $modal-success;
+    }
+
+    .modal__close {
+      color: $modal-color;
+      text-shadow: 0 1px 0 #000;
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+
+    .modal__body {
+      color: $modal-color;
+      background: $modal-bg;
+    }
+
+    .modal__footer {
+      background: $modal-bg;
+      border-top: 1px solid $modal-success;
+    }
+
+  }
+
+  &--warning {
+
+    .modal__header {
+      color: $modal-warning;
+      background: $modal-bg;
+      border-bottom: 1px solid $modal-warning;
+    }
+
+    .modal__close {
+      color: $modal-color;
+      text-shadow: 0 1px 0 #000;
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+
+    .modal__body {
+      color: $modal-color;
+      background: $modal-bg;
+    }
+
+    .modal__footer {
+      background: $modal-bg;
+      border-top: 1px solid $modal-warning;
+    }
+
+  }
+
+  &--info {
+
+    .modal__header {
+      color: $modal-info;
+      background: $modal-bg;
+      border-bottom: 1px solid $modal-info;
+    }
+
+    .modal__close {
+      color: $modal-color;
+      text-shadow: 0 1px 0 #000;
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+
+    .modal__body {
+      color: $modal-color;
+      background: $modal-bg;
+    }
+
+    .modal__footer {
+      background: $modal-bg;
+      border-top: 1px solid $modal-info;
+    }
+
+  }
+
+}

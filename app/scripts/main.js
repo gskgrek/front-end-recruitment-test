@@ -120,13 +120,29 @@
     return pattern.test( String(input).trim() );
   };
 
+  const cleanInputErrorOnChangeEvent = function(){
+    this.parentNode.classList.remove('form-error');
+  };
+
   const $checkout = document.getElementById('checkout');
   if( $checkout ){
+
+    const $modal = document.querySelector('.modal');
+    const $modal_body = $modal.querySelector('.modal__body');
+    $modal.querySelector('.modal__btn-ok').addEventListener('click', function(){
+      $modal.classList.remove('show');
+    });
+
+    $checkout.querySelectorAll('input, select').forEach( (item) => {
+      item.addEventListener('change', cleanInputErrorOnChangeEvent);
+      item.addEventListener('keyup', cleanInputErrorOnChangeEvent);
+    });
+
     $checkout.querySelector('form').addEventListener('submit', function(e){
       let errors = [];
 
-      const elements = this.querySelectorAll('input, select');
-      elements.forEach( (item) => {
+      const $inputs = this.querySelectorAll('input, select');
+      $inputs.forEach( (item) => {
 
         const type = item.dataset.type ? item.dataset.type : 'text';
         let isValid = true;
@@ -181,8 +197,8 @@
         e.preventDefault();
         e.stopImmediatePropagation();
 
-        let msg = errors.join("<br/>\n");
-        console.log( msg );
+        $modal_body.innerHTML = errors.join("<br/>");
+        $modal.classList.add('show');
 
         return false;
 
